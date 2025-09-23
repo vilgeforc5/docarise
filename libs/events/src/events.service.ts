@@ -1,4 +1,3 @@
-// import { EventName, eventsMap,  } from '@app/events/events-map';
 import { Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 
@@ -13,7 +12,7 @@ export class EventsService {
     return this.client.emit(event, payload);
   }
 
-  send<E extends EventName, R = any>(event: E, payload: Payload<E>) {
-    return this.client.send<R>(event, payload);
+  send<E extends EventName>(event: E, payload: Payload<E>) {
+    return this.client.send(event, payload);
   }
 }

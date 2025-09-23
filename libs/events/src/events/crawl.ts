@@ -1,6 +1,7 @@
+import { BaseEventsDto } from '@app/events/events/base';
 import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
 
-export class CrawlDto {
+export class CrawlDto extends BaseEventsDto {
   @IsString()
   @IsNotEmpty()
   @IsUrl()

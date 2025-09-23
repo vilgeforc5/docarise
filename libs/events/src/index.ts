@@ -1,3 +1,3 @@
 export * from './events.service';
 
-export * from './dto/crawl';
+export * from './events/crawl';
