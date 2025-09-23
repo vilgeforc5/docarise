@@ -1,4 +1,4 @@
-import { CrawlDto, crawlEvent } from '@app/events';
+import { CrawlDto, crawlEvent } from '@app/redis';
 import { Controller } from '@nestjs/common';
 import { EventPattern, Payload } from '@nestjs/microservices';
 import { CrawlerService } from './crawler.service';

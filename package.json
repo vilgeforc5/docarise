@@ -79,6 +79,7 @@
     ],
     "moduleNameMapper": {
       "^@app/events(|/.*)$": "<rootDir>/libs/events/src/$1",
+      "^@app/redis(|/.*)$": "<rootDir>/libs/redis/src/$1",
       "^@app/transports(|/.*)$": "<rootDir>/libs/transports/src/$1"
     }
   }

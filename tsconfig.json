@@ -18,10 +18,24 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@app/events": ["libs/events/src"],
-      "@app/events/*": ["libs/events/src/*"],
-      "@app/transports": ["libs/transports/src"],
-      "@app/transports/*": ["libs/transports/src/*"]
+      "@app/events": [
+        "libs/events/src"
+      ],
+      "@app/events/*": [
+        "libs/events/src/*"
+      ],
+      "@app/redis": [
+        "libs/redis/src"
+      ],
+      "@app/redis/*": [
+        "libs/redis/src/*"
+      ],
+      "@app/transports": [
+        "libs/transports/src"
+      ],
+      "@app/transports/*": [
+        "libs/transports/src/*"
+      ]
     }
   }
 }
