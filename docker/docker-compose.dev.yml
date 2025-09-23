@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  redis:
+    image: redis:latest
+    container_name: docarise-redis
+    ports:
+      - '${REDIS_PORT}:${REDIS_PORT}'
+    command: redis-server --port ${REDIS_PORT} --dir /data --appendonly yes
+    volumes:
+      - docarise-redis-data:/data
+
+volumes:
+  docarise-redis-data: {}

@@ -27,6 +27,24 @@
       "compilerOptions": {
         "tsConfigPath": "apps/docarise/tsconfig.app.json"
       }
+    },
+    "events": {
+      "type": "library",
+      "root": "libs/events",
+      "entryFile": "index",
+      "sourceRoot": "libs/events/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/events/tsconfig.lib.json"
+      }
+    },
+    "transports": {
+      "type": "library",
+      "root": "libs/transports",
+      "entryFile": "index",
+      "sourceRoot": "libs/transports/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/transports/tsconfig.lib.json"
+      }
     }
   }
 }
