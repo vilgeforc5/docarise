@@ -3,6 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { MicroserviceOptions } from '@nestjs/microservices';
 import { TransportOptionsService, TransportsModule } from 'libs/transports/src';
 import { CrawlerModule } from './crawler.module';
+import { CatchEverythingFilter } from './catch-all.filter';
 
 async function bootstrap() {
   const logger = new Logger();
@@ -16,7 +17,9 @@ async function bootstrap() {
     CrawlerModule,
     transportsService.redis,
   );
+
   app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalFilters(new CatchEverythingFilter(logger));
   app.useLogger(logger);
 
   app.status.subscribe((status) => {

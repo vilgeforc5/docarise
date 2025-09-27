@@ -10,7 +10,7 @@ export class AppService {
       id: '123',
     });
     this.redis.emit('crawl', {
-      url: 'WRONGhtt121231233ps://www.deepseek.com/',
+      url: 'WRONGHTTP121231233ps://www.deepseek.com/',
       id: ' 12123',
     });
 
