@@ -24,6 +24,12 @@
       "@app/events/*": [
         "libs/events/src/*"
       ],
+      "@app/prisma": [
+        "libs/prisma/src"
+      ],
+      "@app/prisma/*": [
+        "libs/prisma/src/*"
+      ],
       "@app/redis": [
         "libs/redis/src"
       ],
