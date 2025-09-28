@@ -8,9 +8,8 @@ export class CrawlerController {
   constructor(private readonly crawlerService: CrawlerService) {}
 
   @EventPattern(crawlEvent)
-  getHello(@Payload() data: CrawlDto) {
-    console.log('data', data);
-
-    return this.crawlerService.getHello();
+  crawl(@Payload() data: CrawlDto) {
+    console.log(data);
+    return this.crawlerService.crawl(data);
   }
 }

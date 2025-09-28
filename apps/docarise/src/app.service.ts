@@ -6,12 +6,8 @@ export class AppService {
   constructor(private readonly redis: RedisService) {}
   getHello() {
     this.redis.emit('crawl', {
-      url: 'https://www.deepseek.com/',
+      url: 'https://redux-saga.js.org/docs/About/',
       operationId: '123',
-    });
-    this.redis.emit('crawl', {
-      url: 'WRONGHTTP121231233ps://www.deepseek.com/',
-      operationId: ' 12123',
     });
 
     return 'Hello World!';

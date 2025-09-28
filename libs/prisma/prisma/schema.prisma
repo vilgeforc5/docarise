@@ -14,8 +14,49 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id String @id @default(cuid())
+model CrawlJob {
+  id        String      @id @default(cuid())
+  url       String
+  status    CrawlStatus @default(PENDING)
+  error_msg String?     @map("errorMsg")
 
-  name String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  CrawlPage CrawlPage[]
+}
+
+model CrawlPage {
+  id          String      @id @default(cuid())
+  url         String
+  status      CrawlStatus @default(PENDING)
+  error_msg   String?
+  contentHash String? // hash of all chunks
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  PageChunk PageChunk[]
+
+  crawlJobId String
+  crawlJob   CrawlJob @relation(fields: [crawlJobId], references: [id])
+}
+
+model PageChunk {
+  id      String @id @default(cuid())
+  content String
+  index   Int //chunk order withing CrawlPage
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  crawlPageId String
+  page        CrawlPage @relation(fields: [crawlPageId], references: [id])
+}
+
+enum CrawlStatus {
+  PENDING
+  IN_PROGRESS
+  FINISHED
+  ERROR
 }
