@@ -3,9 +3,11 @@ import { TransportOptionsService, TransportsModule } from '@app/transports';
 import { Inject, Module, OnApplicationBootstrap } from '@nestjs/common';
 import { ClientProxy, ClientProxyFactory } from '@nestjs/microservices';
 import { RedisService } from './redis.service';
+import { AuthModule } from '@app/auth';
+import { RedisAuthGuard } from '@app/redis/redis-auth.guard';
 
 @Module({
-  imports: [TransportsModule],
+  imports: [TransportsModule, AuthModule],
   providers: [
     {
       inject: [TransportOptionsService],
@@ -15,8 +17,9 @@ import { RedisService } from './redis.service';
       provide: tokens.redisClient,
     },
     RedisService,
+    RedisAuthGuard,
   ],
-  exports: [RedisService],
+  exports: [RedisService, RedisAuthGuard],
 })
 export class RedisModule implements OnApplicationBootstrap {
   constructor(

@@ -3,7 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { MicroserviceOptions } from '@nestjs/microservices';
 import { TransportOptionsService, TransportsModule } from 'libs/transports/src';
 import { CrawlerModule } from './crawler.module';
-import { CatchEverythingFilter } from './catch-all.filter';
+import { BadRequestFilter } from './bad-request.filter';
 
 async function bootstrap() {
   const logger = new Logger();
@@ -19,7 +19,7 @@ async function bootstrap() {
   );
 
   app.useGlobalPipes(new ValidationPipe());
-  app.useGlobalFilters(new CatchEverythingFilter(logger));
+  app.useGlobalFilters(new BadRequestFilter(logger));
   app.useLogger(logger);
 
   app.status.subscribe((status) => {

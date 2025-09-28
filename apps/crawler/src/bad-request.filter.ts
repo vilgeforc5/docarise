@@ -9,7 +9,7 @@ import { RedisContext } from '@nestjs/microservices';
 import { BaseEventsDto } from '@app/redis/events/base';
 
 @Catch(BadRequestException)
-export class CatchEverythingFilter implements ExceptionFilter {
+export class BadRequestFilter implements ExceptionFilter {
   constructor(private readonly logger: Logger) {}
 
   catch(_exception: unknown, host: ArgumentsHost): void {
@@ -27,7 +27,7 @@ export class CatchEverythingFilter implements ExceptionFilter {
 
         this.logger.error(
           `Validation failed: ${JSON.stringify({ channel, args, payload }, null, 2)}`,
-          CatchEverythingFilter.name,
+          BadRequestFilter.name,
         );
       }
     }

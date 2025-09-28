@@ -4,4 +4,7 @@ export class BaseEventsDto {
   @IsOptional()
   @IsString()
   id: string;
+
+  @IsString()
+  authToken: string;
 }
