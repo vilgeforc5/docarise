@@ -63,15 +63,6 @@
       "compilerOptions": {
         "tsConfigPath": "libs/redis/tsconfig.lib.json"
       }
-    },
-    "transports": {
-      "type": "library",
-      "root": "libs/transports",
-      "entryFile": "index",
-      "sourceRoot": "libs/transports/src",
-      "compilerOptions": {
-        "tsConfigPath": "libs/transports/tsconfig.lib.json"
-      }
     }
   }
 }

@@ -1,21 +1,21 @@
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { MicroserviceOptions } from '@nestjs/microservices';
-import { TransportOptionsService, TransportsModule } from 'libs/transports/src';
 import { CrawlerModule } from './crawler.module';
 import { BadRequestFilter } from './bad-request.filter';
+import { RedisModule } from '@app/redis';
+import { RedisConnectionService } from '@app/redis/redis-connection.service';
 
 async function bootstrap() {
   const logger = new Logger();
-  const transportContext =
-    await NestFactory.createApplicationContext(TransportsModule);
-  const transportsService = transportContext.get<TransportOptionsService>(
-    TransportOptionsService,
+  const redisContext = await NestFactory.createApplicationContext(RedisModule);
+  const redisConnection = redisContext.get<RedisConnectionService>(
+    RedisConnectionService,
   );
 
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     CrawlerModule,
-    transportsService.redis,
+    redisConnection.options,
   );
 
   app.useGlobalPipes(new ValidationPipe());

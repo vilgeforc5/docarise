@@ -42,12 +42,6 @@
       "@app/redis/*": [
         "libs/redis/src/*"
       ],
-      "@app/transports": [
-        "libs/transports/src"
-      ],
-      "@app/transports/*": [
-        "libs/transports/src/*"
-      ]
     }
   }
 }

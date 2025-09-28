@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { RedisOptions, Transport } from '@nestjs/microservices';
 
 @Injectable()
-export class TransportOptionsService {
-  get redis(): RedisOptions {
+export class RedisConnectionService {
+  get options(): RedisOptions {
     const port = parseInt(process.env.REDIS_PORT || '');
     const host = process.env.REDIS_HOST;
 
