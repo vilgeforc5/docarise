@@ -19,7 +19,7 @@ export class BadRequestFilter implements ExceptionFilter {
         unknown,
       ];
 
-      const opId = payload.id;
+      const opId = payload.operationId;
 
       if (context instanceof RedisContext && opId && opId.length > 0) {
         const channel = context.getChannel();

@@ -7,11 +7,11 @@ export class AppService {
   getHello() {
     this.redis.emit('crawl', {
       url: 'https://www.deepseek.com/',
-      id: '123',
+      operationId: '123',
     });
     this.redis.emit('crawl', {
       url: 'WRONGHTTP121231233ps://www.deepseek.com/',
-      id: ' 12123',
+      operationId: ' 12123',
     });
 
     return 'Hello World!';
