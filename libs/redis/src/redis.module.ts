@@ -1,10 +1,10 @@
 import { tokens } from '@app/redis/tokens';
 import { Inject, Module, OnApplicationBootstrap } from '@nestjs/common';
 import { ClientProxy, ClientProxyFactory } from '@nestjs/microservices';
-import { RedisService } from './redis.service';
+import { RedisService } from './providers/redis.service';
 import { AuthModule } from '@app/auth';
-import { RedisAuthGuard } from '@app/redis/redis-auth.guard';
-import { RedisConnectionService } from '@app/redis/redis-connection.service';
+import { RedisAuthGuard } from '@app/redis/providers/redis-auth.guard';
+import { RedisConnectionService } from '@app/redis/providers/redis-connection.service';
 
 @Module({
   imports: [AuthModule],

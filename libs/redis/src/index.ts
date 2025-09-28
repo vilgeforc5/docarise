@@ -1,5 +1,5 @@
 export * from './redis.module';
-export * from './redis.service';
+export * from './providers/redis.service';
 
 //events
 export * from './events/crawl';

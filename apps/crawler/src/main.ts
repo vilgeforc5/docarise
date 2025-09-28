@@ -4,7 +4,7 @@ import { MicroserviceOptions } from '@nestjs/microservices';
 import { CrawlerModule } from './crawler.module';
 import { BadRequestFilter } from './bad-request.filter';
 import { RedisModule } from '@app/redis';
-import { RedisConnectionService } from '@app/redis/redis-connection.service';
+import { RedisConnectionService } from '@app/redis/providers/redis-connection.service';
 
 async function bootstrap() {
   const logger = new Logger();
