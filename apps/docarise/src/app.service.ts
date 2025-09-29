@@ -4,12 +4,11 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class AppService {
   constructor(private readonly redis: RedisService) {}
+
   getHello() {
     this.redis.emit('crawl', {
       url: 'https://redux-saga.js.org/docs/About/',
-      operationId: '123',
+      operationId: Math.random().toString(),
     });
-
-    return 'Hello World!';
   }
 }

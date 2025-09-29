@@ -9,7 +9,6 @@ export class CrawlerController {
 
   @EventPattern(crawlEvent)
   crawl(@Payload() data: CrawlDto) {
-    console.log(data);
     return this.crawlerService.crawl(data);
   }
 }
