@@ -4,23 +4,28 @@ import { ClientProxy, ClientProxyFactory } from '@nestjs/microservices';
 import { RedisService } from './providers/redis.service';
 import { AuthModule } from '@app/auth';
 import { RedisAuthGuard } from '@app/redis/providers/redis-auth.guard';
-import { RedisConnectionService } from '@app/redis/providers/redis-connection.service';
+import { ConfigModule } from '@app/config';
+import { ConfigService } from '@nestjs/config';
 
 @Module({
-  imports: [AuthModule],
+  imports: [AuthModule, ConfigModule],
   providers: [
     {
-      inject: [RedisConnectionService],
-      useFactory: (options: RedisConnectionService) => {
-        return ClientProxyFactory.create(options.options);
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => {
+        return ClientProxyFactory.create({
+          options: {
+            port: config.get<string>('REDIS_PORT'),
+            host: config.get<number>('REDIS_HOST'),
+          },
+        });
       },
       provide: tokens.redisClient,
     },
-    RedisConnectionService,
     RedisService,
     RedisAuthGuard,
   ],
-  exports: [RedisService, RedisAuthGuard, RedisConnectionService],
+  exports: [RedisService, RedisAuthGuard],
 })
 export class RedisModule implements OnApplicationBootstrap {
   constructor(

@@ -8,7 +8,7 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
-    "start:dev": "dotenv -e .env.development -- nest start --watch",
+    "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/apps/docarise/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
@@ -23,6 +23,7 @@
   "dependencies": {
     "@crawlee/memory-storage": "^3.15.1",
     "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.1",
     "@nestjs/jwt": "^11.0.0",
     "@nestjs/microservices": "^11.1.6",
@@ -88,6 +89,7 @@
     ],
     "moduleNameMapper": {
       "^@app/auth(|/.*)$": "<rootDir>/libs/auth/src/$1",
+      "^@app/config(|/.*)$": "<rootDir>/libs/config/src/$1",
       "^@app/events(|/.*)$": "<rootDir>/libs/events/src/$1",
       "^@app/prisma(|/.*)$": "<rootDir>/libs/prisma/src/$1",
       "^@app/redis(|/.*)$": "<rootDir>/libs/redis/src/$1"
