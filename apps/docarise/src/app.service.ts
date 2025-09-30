@@ -1,14 +1,13 @@
-import { RedisService } from '@app/redis';
 import { Injectable } from '@nestjs/common';
+import { CrawlingQueueService } from '@app/bull-queue';
 
 @Injectable()
 export class AppService {
-  constructor(private readonly redis: RedisService) {}
+  constructor(private readonly crawlingQueue: CrawlingQueueService) {}
 
-  getHello() {
-    this.redis.emit('crawl', {
+  async getHello() {
+    await this.crawlingQueue.start({
       url: 'https://redux-saga.js.org/docs/About/',
-      operationId: Math.random().toString(),
     });
   }
 }

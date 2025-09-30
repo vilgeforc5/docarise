@@ -1,13 +1,21 @@
-import { Injectable } from '@nestjs/common';
-import { CrawlDto } from '@app/redis';
-import { Configuration, PuppeteerCrawler, RequestQueue } from 'crawlee';
+import { Processor, WorkerHost } from '@nestjs/bullmq';
+import { crawlingQueue } from '@app/bull-queue';
+import { Job } from 'bullmq';
 import { MemoryStorage } from '@crawlee/memory-storage';
+import { Configuration, PuppeteerCrawler, RequestQueue } from 'crawlee';
+import { TJobDto } from '@app/bull-queue/queue/queue.types';
 
-@Injectable()
-export class CrawlerService {
-  constructor() {}
+@Processor(crawlingQueue.name, { concurrency: 3 })
+export class CrawlerProcessor extends WorkerHost {
+  async process(job: Job<TJobDto<typeof crawlingQueue, 'start'>>) {
+    console.log(`Processing job: ${job.name}`);
+    await this.crawl({
+      url: job.data.url,
+      operationId: job.id || Math.random().toString(),
+    });
+  }
 
-  async crawl({ url, operationId }: CrawlDto) {
+  async crawl({ url, operationId }: { url: string; operationId: string }) {
     const config = new Configuration({ persistStorage: false });
     const storage = new MemoryStorage({
       persistStorage: false,

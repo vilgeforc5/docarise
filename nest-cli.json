@@ -19,6 +19,15 @@
         "tsConfigPath": "libs/auth/tsconfig.lib.json"
       }
     },
+    "bull-queue": {
+      "type": "library",
+      "root": "libs/bull-queue",
+      "entryFile": "index",
+      "sourceRoot": "libs/bull-queue/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/bull-queue/tsconfig.lib.json"
+      }
+    },
     "config": {
       "type": "library",
       "root": "libs/config",
@@ -62,15 +71,6 @@
       "sourceRoot": "libs/prisma/src",
       "compilerOptions": {
         "tsConfigPath": "libs/prisma/tsconfig.lib.json"
-      }
-    },
-    "redis": {
-      "type": "library",
-      "root": "libs/redis",
-      "entryFile": "index",
-      "sourceRoot": "libs/redis/src",
-      "compilerOptions": {
-        "tsConfigPath": "libs/redis/tsconfig.lib.json"
       }
     }
   }

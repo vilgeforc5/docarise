@@ -24,6 +24,12 @@
       "@app/auth/*": [
         "libs/auth/src/*"
       ],
+      "@app/bull-queue": [
+        "libs/bull-queue/src"
+      ],
+      "@app/bull-queue/*": [
+        "libs/bull-queue/src/*"
+      ],
       "@app/config": [
         "libs/config/src"
       ],
@@ -42,12 +48,6 @@
       "@app/prisma/*": [
         "libs/prisma/src/*"
       ],
-      "@app/redis": [
-        "libs/redis/src"
-      ],
-      "@app/redis/*": [
-        "libs/redis/src/*"
-      ]
     }
   }
 }
